@@ -1,48 +1,65 @@
-# Exp.No:24  
-## Multi-level Inheritance
+# Ex.No:5E Multiple Inheritance
 
----
+## AIM  
+To write a Python program to get the name, attendance, and ID of a student and check if they are eligible for the next module using multiple inheritance. If attendance > 80, the student is eligible; otherwise, not eligible.
 
-### AIM  
-To write a Python program to get the name, age, and ID of a person and display them using multilevel inheritance.
+## ALGORITHM
 
----
+1. Define the `Student` class.
+2. Inside the `Student` class, define the `__init__` method (constructor). The `__init__` method accepts two parameters: `name` and `student_id`.
+    - Inside the `__init__` method: Assign the value of `name` to `self.name` and `student_id` to `self.student_id`.
+3. Define the `get_student_info` method inside the `Student` class:
+    - This method should return a string formatted with `self.name` and `self.student_id`.
+4. Define the `Attendance` class, which inherits from the `Student` class.
+5. Inside the `Attendance` class, define the `__init__` method (constructor).
+    - The `__init__` method accepts three parameters: `name`, `student_id`, and `attendance`.
+    - Inside the `__init__` method: Call the parent class constructor `super().__init__(name, student_id)` to initialize `name` and `student_id`. Assign the value of `attendance` to `self.attendance`.
+6. Define the `check_eligibility` method inside the `Attendance` class:
+    - If `self.attendance` is greater than 80, return a formatted string indicating the student is eligible for the module exam.
+    - Otherwise, return a formatted string indicating the student is not eligible for the module exam.
+7. Prompt the user to enter the `name` (as a string), `student_id` (as an integer), and `attendance` (as an integer).
+8. Create an instance `student` of the `Attendance` class, passing the entered `name`, `student_id`, and `attendance` to the constructor.
+9. Call the `check_eligibility` method on the `student` object and print the result.
+10. Terminate the program.
 
-### ALGORITHM
+## PROGRAM
+```
+class Student:
+    def __init__(self, name, student_id):
+        self.name = name
+        self.student_id = student_id
 
-1. Define the `Person` class:
-   - Inside the `Person` class, define the `__init__` method (constructor) with two parameters: `name` and `age`.
-   - Inside the `__init__` method, assign the `name` to `self.name` and `age` to `self.age`.
+    def get_student_info(self):
+        return f"Name: {self.name}, ID: {self.student_id}"
 
-2. Define the `PersonDetails` class that inherits from the `Person` class:
-   - Inside the `PersonDetails` class, define the `__init__` method (constructor) with three parameters: `name`, `age`, and `person_id`.
-   - Inside the `__init__` method, call the `__init__` method of the `Person` class using `super()` to initialize `name` and `age`.
-   - Assign `person_id` to `self.person_id`.
+class Attendance(Student):
+    def __init__(self, name, student_id, attendance):
+        super().__init__(name, student_id)
+        self.attendance = attendance
 
-3. Define the `DisplayDetails` class that inherits from the `PersonDetails` class:
-   - Inside the `DisplayDetails` class, define the `__init__` method (constructor) with three parameters: `name`, `age`, and `person_id`.
-   - Inside the `__init__` method, call the `__init__` method of the `PersonDetails` class using `super()` to initialize `name`, `age`, and `person_id`.
+    def check_eligibility(self):
+        if self.attendance > 80:
+            return f"{self.get_student_info()} is Eligible for Module Exam."
+        else:
+            return f"{self.get_student_info()} is Not Eligible for Module Exam."
 
-4. Inside the `DisplayDetails` class, define the `show_details` method:
-   - Inside the `show_details` method, return a formatted string with `self.name`, `self.age`, and `self.person_id`.
+# Taking inputs
+name = input()
+student_id = int(input())
+attendance = int(input())
 
-5. Prompt the user to enter `name` (string), `age` (integer), and `person_id` (integer).
+# Creating object
+student = Attendance(name, student_id, attendance)
 
-6. Create an instance `person` of the `DisplayDetails` class, passing `name`, `age`, and `person_id` to the constructor.
-
-7. Call the `show_details` method on the `person` object and print the result.
-
-8. Terminate the program.
-
----
-
-### PROGRAM
+# Checking eligibility
+print(student.check_eligibility())
 
 ```
+## OUTPUT
+![Screenshot 2025-04-28 150640](https://github.com/user-attachments/assets/de2ae172-f36d-4ba6-b1bd-3a8b204e14f2)
+
+## RESULT
+Thus a Python program to get the name, attendance, and ID of a student and check if they are eligible for the next module using multiple inheritance. If attendance > 80, the student is eligible; otherwise, not eligible has been mplemented successfully.
 
 
-```
 
-### OUTPUT
-
-### RESULT
