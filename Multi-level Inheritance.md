@@ -1,65 +1,47 @@
-# Ex.No:5E Multiple Inheritance
+# Ex.No:5D Multi-level Inheritance
 
 ## AIM  
-To write a Python program to get the name, attendance, and ID of a student and check if they are eligible for the next module using multiple inheritance. If attendance > 80, the student is eligible; otherwise, not eligible.
+To Write a Python program to Get the name, age and location of a person and display using Multilevel inheritance.
 
 ## ALGORITHM
 
-1. Define the `Student` class.
-2. Inside the `Student` class, define the `__init__` method (constructor). The `__init__` method accepts two parameters: `name` and `student_id`.
-    - Inside the `__init__` method: Assign the value of `name` to `self.name` and `student_id` to `self.student_id`.
-3. Define the `get_student_info` method inside the `Student` class:
-    - This method should return a string formatted with `self.name` and `self.student_id`.
-4. Define the `Attendance` class, which inherits from the `Student` class.
-5. Inside the `Attendance` class, define the `__init__` method (constructor).
-    - The `__init__` method accepts three parameters: `name`, `student_id`, and `attendance`.
-    - Inside the `__init__` method: Call the parent class constructor `super().__init__(name, student_id)` to initialize `name` and `student_id`. Assign the value of `attendance` to `self.attendance`.
-6. Define the `check_eligibility` method inside the `Attendance` class:
-    - If `self.attendance` is greater than 80, return a formatted string indicating the student is eligible for the module exam.
-    - Otherwise, return a formatted string indicating the student is not eligible for the module exam.
-7. Prompt the user to enter the `name` (as a string), `student_id` (as an integer), and `attendance` (as an integer).
-8. Create an instance `student` of the `Attendance` class, passing the entered `name`, `student_id`, and `attendance` to the constructor.
-9. Call the `check_eligibility` method on the `student` object and print the result.
-10. Terminate the program.
+1. Begin the program.
+2. Define a class Parent with: An __init__() method to initialize name. A getName() method to return the name.
+3. Define a class Child that inherits from Parent with: An __init__() method to initialize name and age (calling the parent's constructor for name). A getAge() method to return the age.
+4. Define a class Grandchild that inherits from Child with: An __init__() method to initialize name, age, and location (calling the child's constructor for name and age).
+5. A getLocation() method to return the location.
+6. Take name, age, and location as input from the user.
+7. Create an object gc of the Grandchild class with the given inputs.
+8. Print the name, age, and location using getName(), getAge(), and getLocation() methods.
+9. Terminate the program.
 
 ## PROGRAM
 ```
-class Student:
-    def __init__(self, name, student_id):
-        self.name = name
-        self.student_id = student_id
-
-    def get_student_info(self):
-        return f"Name: {self.name}, ID: {self.student_id}"
-
-class Attendance(Student):
-    def __init__(self, name, student_id, attendance):
-        super().__init__(name, student_id)
-        self.attendance = attendance
-
-    def check_eligibility(self):
-        if self.attendance > 80:
-            return f"{self.get_student_info()} is Eligible for Module Exam."
-        else:
-            return f"{self.get_student_info()} is Not Eligible for Module Exam."
-
-# Taking inputs
-name = input()
-student_id = int(input())
-attendance = int(input())
-
-# Creating object
-student = Attendance(name, student_id, attendance)
-
-# Checking eligibility
-print(student.check_eligibility())
-
+class Parent:
+   def __init__(self,name):
+     self.name = name
+   def getName(self):
+     return self.name
+class Child(Parent):
+   def __init__(self,name,age):
+     Parent.__init__(self,name)
+     self.age = age
+   def getAge(self):
+     return self.age
+class Grandchild(Child):
+   def __init__(self,name,age,location):
+     Child.__init__(self,name,age)
+     self.location=location
+   def getLocation(self):
+     return self.location
+name=input()
+age=int(input())
+loc=input()
+gc = Grandchild(name,age,loc)
+print(gc.getName(), gc.getAge(), gc.getLocation())
 ```
 ## OUTPUT
-![Screenshot 2025-04-28 150640](https://github.com/user-attachments/assets/de2ae172-f36d-4ba6-b1bd-3a8b204e14f2)
+![Screenshot 2025-04-28 150117](https://github.com/user-attachments/assets/7dda0f7e-bb9f-4f17-9e77-98dcfe95c208)
 
 ## RESULT
-Thus a Python program to get the name, attendance, and ID of a student and check if they are eligible for the next module using multiple inheritance. If attendance > 80, the student is eligible; otherwise, not eligible has been mplemented successfully.
-
-
-
+Thus a Python program to Get the name, age and location of a person and display using Multilevel inheritance has been implemented successfully.
